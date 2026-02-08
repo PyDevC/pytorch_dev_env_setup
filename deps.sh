@@ -132,6 +132,9 @@ then
     echo "# direnv path update and hooking in the terminal" >> ~/.bashrc
     echo "export PATH=\${PATH}:${DIRENV_INSTALL_PATH}" >> ~/.bashrc
     echo "eval \"\$(direnv hook bash)\"" >> ~/.bashrc
+    echo "# direnv path update and hooking in the terminal" >> ~/.zshrc
+    echo "export PATH=\${PATH}:${DIRENV_INSTALL_PATH}" >> ~/.zshrc
+    echo "eval \"\$(direnv hook bash)\"" >> ~/.zshrc
 fi
 
 
