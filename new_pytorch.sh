@@ -97,8 +97,9 @@ PY_INSTALL_REPO=${INSTALL_HOME}/python${PY_VERSION}/${MODE}/install
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${PY_INSTALL_REPO}/lib 
 
-if [ -d ${INSTALL_PATH} ]; then
-  echo "Install path already exists, skipping ${INSTALL_PATH}"
+if [ -d ${INSTALL_PATH}/build ]; then
+  echo "build path already exists, skipping ${INSTALL_PATH}"
+  echo "If you want to re-install it then do rm -rf build for that particular version ${INSTALL_PATH}"
   exit 0
 fi
 
@@ -123,9 +124,11 @@ if [ "${USE_BINARY}" == "1" ]; then
     popd
 
 else
-    git clone git@github.com:pytorch/pytorch.git ${INSTALL_PATH}
+    git clone https://github.com/pytorch/pytorch.git ${INSTALL_PATH}
     pushd ${INSTALL_PATH}
-    git remote add alban git@github.com:albanD/pytorch.git
+    git remote remote origin
+    git remote add origin git@github.com:PyDevC/pytorch.git
+    git remote add upstream git@github.com:pytorch/pytorch.git
     git submodule update --init --recursive
 
     echo ". ${ENV_PATH}/bin/activate" > .envrc
