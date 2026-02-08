@@ -126,7 +126,7 @@ if [ "${USE_BINARY}" == "1" ]; then
 else
     git clone https://github.com/pytorch/pytorch.git ${INSTALL_PATH}
     pushd ${INSTALL_PATH}
-    git remote remote origin
+    git remote remove origin
     git remote add origin git@github.com:PyDevC/pytorch.git
     git remote add upstream git@github.com:pytorch/pytorch.git
     git submodule update --init --recursive
