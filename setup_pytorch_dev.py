@@ -287,8 +287,8 @@ def validate(target_dir, dry_run):
 @click.option('--binary', is_flag=True, help='Use binary install (default: source)')
 @click.option('-c', '--cuda', default='cpu', help='CUDA version or "cpu"')
 @click.option('--no-gil', is_flag=True, help='Disable GIL (Python 3.13+ only)')
-@click.option('--personal-remote', default='git@github.com:albanD/pytorch.git', help='Personal git remote URL')
-@click.option('--remote-name', default='alban', help='Personal remote name')
+@click.option('--personal-remote', default='git@github.com:PyDevC/pytorch.git', help='Personal git remote URL')
+@click.option('--remote-name', default='pydevc', help='Personal remote name')
 @click.option('--force', is_flag=True, help='Force cleanup without prompt')
 @click.option('--dry-run', is_flag=True, help='Show what would be done')
 def main(target_dir, python_version, mode, debug, binary, cuda, no_gil,
