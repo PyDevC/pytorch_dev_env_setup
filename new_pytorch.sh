@@ -124,12 +124,17 @@ if [ "${USE_BINARY}" == "1" ]; then
     popd
 
 else
-    git clone https://github.com/pytorch/pytorch.git ${INSTALL_PATH}
-    pushd ${INSTALL_PATH}
-    git remote remove origin
-    git remote add origin git@github.com:PyDevC/pytorch.git
-    git remote add upstream git@github.com:pytorch/pytorch.git
-    git submodule update --init --recursive
+
+    if [[ ! -d ${INSTALL_PATH} ]]; then
+        git clone https://github.com/pytorch/pytorch.git ${INSTALL_PATH}
+        pushd ${INSTALL_PATH}
+        git remote remove origin
+        git remote add origin git@github.com:PyDevC/pytorch.git
+        git remote add upstream git@github.com:pytorch/pytorch.git
+        git submodule update --init --recursive
+    else
+        pushd ${INSTALL_PATH}
+    fi
 
     echo ". ${ENV_PATH}/bin/activate" > .envrc
     direnv allow
